@@ -1,10 +1,15 @@
 
 import { GoogleGenAI, Type } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Asegurar que la API Key esté presente antes de inicializar para evitar errores de carga de módulo
+const getAI = () => {
+  const apiKey = typeof process !== 'undefined' ? process.env.API_KEY : '';
+  return new GoogleGenAI({ apiKey: apiKey || '' });
+};
 
 export async function generateDevotional(theme: string) {
   try {
+    const ai = getAI();
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
       contents: `Genera un devocional cristiano breve sobre el tema: ${theme}. 
@@ -33,6 +38,7 @@ export async function generateDevotional(theme: string) {
 
 export async function generateVerseReflection(verse: string) {
   try {
+    const ai = getAI();
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
       contents: `Proporciona una reflexión espiritual profunda pero breve (máximo 100 palabras) sobre el siguiente versículo bíblico: "${verse}".`,

@@ -1,5 +1,5 @@
 
-import { Preacher, Lesson, Study, Devotional, Event } from './types';
+import { Preacher, Lesson, Study, Devotional, Event } from './types.ts';
 
 export const PREACHERS: Preacher[] = [
   {

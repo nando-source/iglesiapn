@@ -1,8 +1,8 @@
 
 import React from 'react';
 import { Play, Calendar, Quote, Heart } from 'lucide-react';
-import { DEVOTIONAL_TODAY } from '../constants';
-import { Lesson } from '../types';
+import { DEVOTIONAL_TODAY } from '../constants.tsx';
+import { Lesson } from '../types.ts';
 
 interface DevotionalProps {
   onPlay: (lesson: Lesson) => void;

@@ -1,8 +1,8 @@
 
 import React, { useState } from 'react';
 import { Play, Download, Search, Calendar, User, BookOpen } from 'lucide-react';
-import { LESSONS, PREACHERS } from '../constants';
-import { Lesson } from '../types';
+import { LESSONS, PREACHERS } from '../constants.tsx';
+import { Lesson } from '../types.ts';
 
 interface LessonsProps {
   onPlay: (lesson: Lesson) => void;
