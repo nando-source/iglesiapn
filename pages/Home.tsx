@@ -2,9 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Calendar, User, BookOpen, MapPin, ExternalLink } from 'lucide-react';
-import { EVENTS } from '../constants';
-import { generateVerseReflection } from '../services/geminiService';
-import { useScrollReveal } from '../hooks/useScrollReveal';
+import { EVENTS } from '../constants.tsx';
+import { generateVerseReflection } from '../services/geminiService.ts';
+import { useScrollReveal } from '../hooks/useScrollReveal.ts';
 
 const BANNER_IMAGES = [
   "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2000&auto=format&fit=crop", 

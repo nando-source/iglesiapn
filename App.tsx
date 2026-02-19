@@ -1,16 +1,16 @@
 
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Layout from './components/Layout';
-import Home from './pages/Home';
-import Studies from './pages/Studies';
-import Lessons from './pages/Sermons'; // Note: component name is updated in the file but imported from existing path for now or updated path
-import Devotional from './pages/Devotional';
-import Preachers from './pages/Preachers';
-import About from './pages/About';
-import Contact from './pages/Contact';
-import AudioPlayer from './components/AudioPlayer';
-import { Lesson } from './types';
+import Layout from './components/Layout.tsx';
+import Home from './pages/Home.tsx';
+import Studies from './pages/Studies.tsx';
+import Lessons from './pages/Sermons.tsx';
+import Devotional from './pages/Devotional.tsx';
+import Preachers from './pages/Preachers.tsx';
+import About from './pages/About.tsx';
+import Contact from './pages/Contact.tsx';
+import AudioPlayer from './components/AudioPlayer.tsx';
+import { Lesson } from './types.ts';
 
 const App: React.FC = () => {
   const [currentLesson, setCurrentLesson] = useState<Lesson | null>(null);
