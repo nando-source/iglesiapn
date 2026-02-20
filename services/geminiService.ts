@@ -1,17 +1,21 @@
 import { GoogleGenAI, Type } from "@google/genai";
 
-// Función segura para obtener la API KEY evitando ReferenceError en el navegador
+// Recuperación segura de la API Key en el contexto del navegador
 const getApiKey = () => {
-  if (typeof process !== 'undefined' && process.env && process.env.API_KEY) {
-    return process.env.API_KEY;
+  try {
+    if (typeof process !== 'undefined' && process.env && process.env.API_KEY) {
+      return process.env.API_KEY;
+    }
+  } catch (e) {
+    // Silenciar errores de acceso a process en entornos donde no existe
   }
-  return "";
+  return null;
 };
 
 export async function generateDevotional(theme: string) {
   const apiKey = getApiKey();
   if (!apiKey) {
-    console.warn("API Key no encontrada para generar devocional.");
+    console.warn("Gemini API Key no configurada. El servicio de devocionales automáticos no estará disponible.");
     return null;
   }
 
@@ -38,7 +42,7 @@ export async function generateDevotional(theme: string) {
 
     return JSON.parse(response.text);
   } catch (error) {
-    console.error("Error generating devotional:", error);
+    console.error("Error al generar el devocional:", error);
     return null;
   }
 }
@@ -55,7 +59,7 @@ export async function generateVerseReflection(verse: string) {
     });
     return response.text;
   } catch (error) {
-    console.error("Error generating reflection:", error);
+    console.error("Error al generar la reflexión:", error);
     return "La Palabra de Dios es lámpara a nuestros pies y lumbrera a nuestro camino.";
   }
 }
