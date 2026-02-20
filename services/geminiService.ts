@@ -1,17 +1,22 @@
 import { GoogleGenAI, Type } from "@google/genai";
 
-// Función segura para obtener la API KEY
+// Función segura para obtener la API KEY evitando ReferenceError en el navegador
 const getApiKey = () => {
-  try {
-    return process.env.API_KEY || "";
-  } catch (e) {
-    return "";
+  if (typeof process !== 'undefined' && process.env && process.env.API_KEY) {
+    return process.env.API_KEY;
   }
+  return "";
 };
 
 export async function generateDevotional(theme: string) {
+  const apiKey = getApiKey();
+  if (!apiKey) {
+    console.warn("API Key no encontrada para generar devocional.");
+    return null;
+  }
+
   try {
-    const ai = new GoogleGenAI({ apiKey: getApiKey() });
+    const ai = new GoogleGenAI({ apiKey });
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
       contents: `Genera un devocional cristiano breve sobre el tema: ${theme}. 
@@ -39,8 +44,11 @@ export async function generateDevotional(theme: string) {
 }
 
 export async function generateVerseReflection(verse: string) {
+  const apiKey = getApiKey();
+  if (!apiKey) return "La Palabra de Dios es lámpara a nuestros pies y lumbrera a nuestro camino.";
+
   try {
-    const ai = new GoogleGenAI({ apiKey: getApiKey() });
+    const ai = new GoogleGenAI({ apiKey });
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
       contents: `Proporciona una reflexión espiritual profunda pero breve (máximo 100 palabras) sobre el siguiente versículo bíblico: "${verse}".`,
