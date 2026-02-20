@@ -1,8 +1,7 @@
 
 import React, { useState } from 'react';
-import { Book, Clock, User, ArrowRight, Search, Filter } from 'lucide-react';
+import { Book, Clock, ArrowRight, Search } from 'lucide-react';
 import { STUDIES, PREACHERS } from '../constants.tsx';
-import { Study } from '../types.ts';
 
 const Studies: React.FC = () => {
   const [filter, setFilter] = useState('');

@@ -17,8 +17,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ sermon, onClose }) => {
 
   useEffect(() => {
     if (sermon && audioRef.current) {
-      audioRef.current.play();
-      setIsPlaying(true);
+      audioRef.current.play().catch(err => console.error("Error playing audio:", err));
     }
   }, [sermon]);
 
@@ -76,6 +75,8 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ sermon, onClose }) => {
         onTimeUpdate={handleTimeUpdate}
         onLoadedMetadata={handleLoadedMetadata}
         onEnded={() => setIsPlaying(false)}
+        onPlay={() => setIsPlaying(true)}
+        onPause={() => setIsPlaying(false)}
       />
       
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-6">

@@ -6,7 +6,7 @@ const getApiKey = () => {
     if (typeof process !== 'undefined' && process.env && process.env.API_KEY) {
       return process.env.API_KEY;
     }
-  } catch (e) {
+  } catch {
     // Silenciar errores de acceso a process en entornos donde no existe
   }
   return null;
@@ -40,6 +40,9 @@ export async function generateDevotional(theme: string) {
       }
     });
 
+    if (!response.text) {
+      throw new Error("Respuesta vacía del modelo");
+    }
     return JSON.parse(response.text);
   } catch (error) {
     console.error("Error al generar el devocional:", error);
@@ -57,7 +60,7 @@ export async function generateVerseReflection(verse: string) {
       model: "gemini-3-flash-preview",
       contents: `Proporciona una reflexión espiritual profunda pero breve (máximo 100 palabras) sobre el siguiente versículo bíblico: "${verse}".`,
     });
-    return response.text;
+    return response.text || "La Palabra de Dios es lámpara a nuestros pies y lumbrera a nuestro camino.";
   } catch (error) {
     console.error("Error al generar la reflexión:", error);
     return "La Palabra de Dios es lámpara a nuestros pies y lumbrera a nuestro camino.";

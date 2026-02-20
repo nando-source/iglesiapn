@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Play, Download, Search, Calendar, User, BookOpen } from 'lucide-react';
+import { Play, Download, Search, Calendar, BookOpen } from 'lucide-react';
 import { LESSONS, PREACHERS } from '../constants.tsx';
 import { Lesson } from '../types.ts';
 

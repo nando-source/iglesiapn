@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Volume2, ChevronRight, MessageSquare } from 'lucide-react';
+import { ChevronRight, MessageSquare } from 'lucide-react';
 import { PREACHERS } from '../constants.tsx';
 import { useScrollReveal } from '../hooks/useScrollReveal.ts';
 
