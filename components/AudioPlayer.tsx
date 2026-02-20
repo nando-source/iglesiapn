@@ -1,7 +1,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { Play, Pause, SkipBack, SkipForward, X } from 'lucide-react';
-import { Lesson } from '../types';
+import { Lesson } from '../types.ts';
 
 interface AudioPlayerProps {
   sermon: Lesson | null;

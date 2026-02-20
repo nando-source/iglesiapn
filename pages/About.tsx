@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { CheckCircle2, Shield, Heart, Zap } from 'lucide-react';
-import { useScrollReveal } from '../hooks/useScrollReveal';
+import { useScrollReveal } from '../hooks/useScrollReveal.ts';
 
 const About: React.FC = () => {
   useScrollReveal();

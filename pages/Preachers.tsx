@@ -1,8 +1,8 @@
 
 import React from 'react';
 import { Volume2, ChevronRight, MessageSquare } from 'lucide-react';
-import { PREACHERS } from '../constants';
-import { useScrollReveal } from '../hooks/useScrollReveal';
+import { PREACHERS } from '../constants.tsx';
+import { useScrollReveal } from '../hooks/useScrollReveal.ts';
 
 const Preachers: React.FC = () => {
   useScrollReveal();
